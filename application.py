@@ -95,5 +95,5 @@ client = discord.Client()
 
 # # keep_alive() #runs web server
 
-# client.run(os.environ['TOKEN'])
+client.run(os.environ['TOKEN'])
 
