@@ -7,10 +7,10 @@ application = Flask(__name__)
 def home():
   return "Hello. I am alive!"
 
-def run():
-  application.run(host='0.0.0.0',port=8080)
+# def run():
+#   application.run(host='0.0.0.0',port=8080)
 
-def keep_alive():
-  # use seperate thread for bot and web server
-  t = Thread(target=run)
-  t.start()
+# def keep_alive():
+#   # use seperate thread for bot and web server
+#   t = Thread(target=run)
+#   t.start()

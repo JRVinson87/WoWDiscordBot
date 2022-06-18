@@ -1,10 +1,12 @@
 import os
 import discord
+from dotenv import load_dotenv
 from application import keep_alive
 from blizzardapi import BlizzardApi
 from wow_realms import wowRealms
 from utils import *
 
+load_dotenv()
 client = discord.Client()
 api_client = BlizzardApi(os.environ['WOW_CLIENT'], os.environ['WOW_SECRET'])
 
@@ -85,7 +87,6 @@ async def on_message(message):
 
 
 keep_alive() #runs web server
-try:
-  client.run(os.environ['TOKEN'])
-except:
-  os.system("kill 1")
+
+client.run(os.environ['TOKEN'])
+
