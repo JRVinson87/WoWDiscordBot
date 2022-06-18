@@ -121,6 +121,7 @@ async def on_message(message):
 
     embed = discord.Embed(
     title = title2,
+    url = f'https://worldofwarcraft.com/en-us/character/us/{realmName}/{split[1]}',
     description = f"Current Arena Ratings:",
     )
 
