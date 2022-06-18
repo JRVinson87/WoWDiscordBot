@@ -30,8 +30,11 @@ def get_cur_raid_stats(realm, name):
 def get_cur_arena_stats(realm, name):
   twovtwo = api_client.wow.profile.get_character_pvp_bracket_statistics("us", "en_US", realm, name, pvp_bracket="2v2")
 
-  threevthree = api_client.wow.profile.get_character_pvp_bracket_statistics("us", "en_US", realm, name, pvp_bracket="3v3")
-
+  try:
+    threevthree = api_client.wow.profile.get_character_pvp_bracket_statistics("us", "en_US", realm, name, pvp_bracket="3v3")
+  except:
+    threevthree = {'rating': 0}
+    
   media = api_client.wow.profile.get_character_media_summary("us", "en_US", realm, name)
 
   return twovtwo, threevthree, media
