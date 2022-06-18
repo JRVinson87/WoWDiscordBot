@@ -1,12 +1,11 @@
-import os
-import discord
-from dotenv import load_dotenv
-# from stay_alive import keep_alive
-from blizzardapi import BlizzardApi
-from wow_realms import wowRealms
-from utils import *
+# import os
+# import discord
+# from dotenv import load_dotenv
+# # from stay_alive import keep_alive
+# from blizzardapi import BlizzardApi
+# from wow_realms import wowRealms
+# from utils import *
 from flask import Flask
-from threading import Thread
 
 application = Flask(__name__)
 
