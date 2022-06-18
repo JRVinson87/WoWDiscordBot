@@ -29,12 +29,13 @@ def get_cur_raid_stats(realm, name):
 
 def get_cur_arena_stats(realm, name):
   twovtwo = api_client.wow.profile.get_character_pvp_bracket_statistics("us", "en_US", realm, name, pvp_bracket="2v2")
+  if 'code' in twovtwo:
+    twovtwo = {'code': 404, 'rating': 0}
 
-  try:
-    threevthree = api_client.wow.profile.get_character_pvp_bracket_statistics("us", "en_US", realm, name, pvp_bracket="3v3")
-  except:
-    threevthree = {'rating': 0}
-    
+  threevthree = api_client.wow.profile.get_character_pvp_bracket_statistics("us", "en_US", realm, name, pvp_bracket="3v3")
+  if 'code' in threevthree:
+    threevthree = {'code': 404, 'rating': 0}
+
   media = api_client.wow.profile.get_character_media_summary("us", "en_US", realm, name)
 
   return twovtwo, threevthree, media
@@ -110,8 +111,19 @@ async def on_message(message):
     except:
       await message.channel.send("Error Fetching Data")
 
+    print("two", two)
+    print("three", three)
+
+    if 'code' in two:
+      if 'code' in three:
+        title2 = "No Arena Ratings Found"
+      else:
+        title2 = f"{split[1].capitalize()} - {three['faction']['name']} ({three['character']['realm']['name']})"
+    else:
+      title2 = f"{split[1].capitalize()} - {two['faction']['name']} ({two['character']['realm']['name']})"
+
     embed = discord.Embed(
-    title = f"{two['character']['name']} - {two['faction']['name']} ({two['character']['realm']['name']})",
+    title = title2,
     description = f"Current Arena Ratings:",
     )
 
