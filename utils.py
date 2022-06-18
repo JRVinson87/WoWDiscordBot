@@ -1,4 +1,5 @@
-api_client = BlizzardApi(os.environ['WOW_CLIENT'], os.environ['WOW_SECRET'])
+import requests
+from application import api_client
 
 def get_cur_mythic_stats(realm, name):
   data = requests.get(f"https://raider.io/api/v1/characters/profile?region=us&realm={realm}&name={name}&fields=mythic_plus_scores_by_season%3Acurrent%2Cmythic_plus_best_runs")

@@ -1,13 +1,12 @@
 import os
 import discord
-import requests
+from keep_alive import keep_alive
 from blizzardapi import BlizzardApi
-# from keep_alive import keep_alive
 from wow_realms import wowRealms
 from utils import *
 
 client = discord.Client()
-  
+api_client = BlizzardApi(os.environ['WOW_CLIENT'], os.environ['WOW_SECRET'])
 
 @client.event
 async def on_ready():
@@ -85,8 +84,8 @@ async def on_message(message):
     await message.channel.send(embed = embed)
 
 
-# keep_alive() #runs web server
-# try:
-#   client.run(os.environ['TOKEN'])
-# except:
-#   os.system("kill 1")
+keep_alive() #runs web server
+try:
+  client.run(os.environ['TOKEN'])
+except:
+  os.system("kill 1")
