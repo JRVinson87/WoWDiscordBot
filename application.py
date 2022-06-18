@@ -111,9 +111,6 @@ async def on_message(message):
     except:
       await message.channel.send("Error Fetching Data")
 
-    print("two", two)
-    print("three", three)
-
     if 'code' in two:
       if 'code' in three:
         title2 = "No Arena Ratings Found"
