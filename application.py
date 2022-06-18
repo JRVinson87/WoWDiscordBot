@@ -1,10 +1,18 @@
 import os
 import discord
 from dotenv import load_dotenv
-from stay_alive import keep_alive
+# from stay_alive import keep_alive
 from blizzardapi import BlizzardApi
 from wow_realms import wowRealms
 from utils import *
+from flask import Flask
+from threading import Thread
+
+application = Flask(__name__)
+
+@application.route('/')
+def home():
+  return "Hello. I am alive!"
 
 load_dotenv()
 client = discord.Client()
@@ -86,7 +94,7 @@ async def on_message(message):
     await message.channel.send(embed = embed)
 
 
-keep_alive() #runs web server
+# keep_alive() #runs web server
 
 client.run(os.environ['TOKEN'])
 
