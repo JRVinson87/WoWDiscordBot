@@ -1,6 +1,6 @@
 import os
 import discord
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 # # from stay_alive import keep_alive
 # from blizzardapi import BlizzardApi
 # from wow_realms import wowRealms
@@ -13,7 +13,7 @@ application = Flask(__name__)
 def home():
   return "Hello. I am alive!"
 
-load_dotenv()
+# load_dotenv()
 client = discord.Client()
 # api_client = BlizzardApi(os.environ['WOW_CLIENT'], os.environ['WOW_SECRET'])
 
@@ -95,5 +95,5 @@ client = discord.Client()
 
 # # keep_alive() #runs web server
 
-client.run(os.environ.get('TOKEN'))
+client.run(os.environ['TOKEN'])
 
