@@ -14,7 +14,7 @@ def home():
   return "Hello. I am alive!"
 
 # load_dotenv()
-# client = discord.Client()
+client = discord.Client()
 # api_client = BlizzardApi(os.environ['WOW_CLIENT'], os.environ['WOW_SECRET'])
 
 # @client.event
@@ -95,5 +95,5 @@ def home():
 
 # # keep_alive() #runs web server
 
-# client.run(os.environ['TOKEN'])
+client.run(os.environ['TOKEN'])
 
