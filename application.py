@@ -106,10 +106,8 @@ async def on_message(message):
     if realmName in wowRealms:
       realmName = wowRealms[realmName]
       
-    try:
-      two, three, media = get_cur_arena_stats(realmName, split[1].lower())
-    except:
-      await message.channel.send("Error Fetching Data")
+      
+    two, three, media = get_cur_arena_stats(realmName, split[1].lower())
 
     if 'code' in two:
       if 'code' in three:
